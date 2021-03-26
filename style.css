@@ -65,7 +65,8 @@ p {
   max-width: 400px;
   margin: 10px;
   padding: 20px;
-  border-radius: 10px;
+  border: 0;
+  border-radius: 5px;
 }
 
 .box h3 {
@@ -77,23 +78,33 @@ p {
   margin: 0;
 }
 
-.active {
-  position: absolute;
-  background-color: rgba(131, 131, 131, 0.699);
+.box:focus {
+  outline: 0;
+}
+
+#postcard {
+  background-color: rgba(161, 161, 161, 0.795);
   box-shadow: 0 10px 10px -6px #000;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  max-height: 85%;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
   aspect-ratio: 3 / 2;
   border: 1px solid rgb(43, 43, 43);
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.897);
   z-index: 10;
 }
 
+.hidden {
+  display: none;
+}
+
 .btn {
+  background-color: #fff;
   border: 0;
   border-radius: 3px;
   padding: 8px;
