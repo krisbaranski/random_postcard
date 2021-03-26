@@ -1,37 +1,34 @@
 'use strict';
 
 const btn = document.querySelector('.btn');
-const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
-};
-// Box Element
 const box = document.querySelector('.box');
+const boxes = document.querySelectorAll('.box');
+let displayMessage = document.querySelector('.message');
+const postcard = document.getElementById('postcard');
 
-displayMessage('Select a number of postcards (1 - 24)');
+console.log(boxes);
+
+displayMessage.textContent = 'Select a number of postcards (1 - 24)';
 
 btn.addEventListener('click', () => {
-  // Number of inputs to create
-  var number = Number(document.getElementById('amount').value);
-
-  // Container <div> where dynamic content will be placed
+  let number = Number(document.getElementById('amount').value);
   let container = document.getElementById('container');
 
   while (container.hasChildNodes()) {
     container.removeChild(container.lastChild);
-    // displayMessage('no input');
+    displayMessage.textContent = 'no input';
   }
-  for (var i = 0; i < number; i++) {
-    var input = document.createElement('DIV');
+  for (let i = 0; i < number; i++) {
+    let input = document.createElement('BUTTON');
     input.classList.add('box');
-    input.type = 'text';
     container.appendChild(input);
   }
 });
 
-box.addEventListener('click', () => {
-  box.classList.add('active');
-});
+const openPostcard = function () {
+  postcard.classList.remove('hidden');
+};
 
-if (number === 0 || NaN) {
-  displayMessage('no input');
-}
+for (let i = 0; i < boxes; i++)
+  boxes[i].addEventListener('click', openPostcard);
+console.log(boxes);
