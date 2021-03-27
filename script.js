@@ -2,13 +2,11 @@
 
 const btn = document.querySelector('.btn');
 const box = document.querySelector('.box');
-const boxes = document.querySelectorAll('.box');
 let displayMessage = document.querySelector('.message');
-const postcard = document.getElementById('postcard');
+const boxes = document.querySelectorAll('.box');
 
-console.log(boxes);
-
-displayMessage.textContent = 'Select a number of postcards (1 - 24)';
+box.classList.add('hidden');
+displayMessage.textContent = 'No Input!';
 
 btn.addEventListener('click', () => {
   let number = Number(document.getElementById('amount').value);
@@ -16,19 +14,25 @@ btn.addEventListener('click', () => {
 
   while (container.hasChildNodes()) {
     container.removeChild(container.lastChild);
-    displayMessage.textContent = 'no input';
   }
   for (let i = 0; i < number; i++) {
     let input = document.createElement('BUTTON');
     input.classList.add('box');
+    input.classList.remove('hidden');
     container.appendChild(input);
   }
+  console.log(number);
+
+  if (number === 0 || !number) {
+    displayMessage.textContent = 'No Input!';
+  }
+
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      let postcard = document.getElementById('postcard');
+      postcard.classList.remove('hidden');
+      box.appendChild(postcard);
+    });
+  });
+  console.log(boxes);
 });
-
-const openPostcard = function () {
-  postcard.classList.remove('hidden');
-};
-
-for (let i = 0; i < boxes; i++)
-  boxes[i].addEventListener('click', openPostcard);
-console.log(boxes);

@@ -15,7 +15,10 @@ body {
 }
 
 head {
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100px;
+  height: 100px;
+  padding: 5px;
 }
 
 h1 {
@@ -48,6 +51,8 @@ p {
 }
 
 .message {
+  font-family: inherit;
+  font-size: 20px;
   text-align: center;
   color: #fff;
   padding: 10px;
