@@ -1,38 +1,49 @@
 'use strict';
 
 const btn = document.querySelector('.btn');
+// const boxes = document.querySelectorAll('.box');
 const box = document.querySelector('.box');
-let displayMessage = document.querySelector('.message');
-const boxes = document.querySelectorAll('.box');
+const container = document.getElementById('container');
 
-box.classList.add('hidden');
-displayMessage.textContent = 'No Input!';
-
-btn.addEventListener('click', () => {
-  let number = Number(document.getElementById('amount').value);
-  let container = document.getElementById('container');
-
+function removeAllBoxes() {
   while (container.hasChildNodes()) {
     container.removeChild(container.lastChild);
   }
+}
+
+function createBox() {
+  let box = `<div class='box'></div>`;
+  return box;
+}
+
+function addBoxes(number) {
   for (let i = 0; i < number; i++) {
-    let input = document.createElement('BUTTON');
-    input.classList.add('box');
-    input.classList.remove('hidden');
-    container.appendChild(input);
+    let box = createBox();
+    container.insertAdjacentHTML('beforeend', box);
   }
-  console.log(number);
+}
 
-  if (number === 0 || !number) {
-    displayMessage.textContent = 'No Input!';
-  }
+function showPostcard() {
+  let postcard = document.getElementById('postcard');
 
-  boxes.forEach(box => {
+  postcard.classList.remove('hidden');
+  console.log('something');
+}
+
+function addClickEventToBoxes() {
+  let boxes = document.getElementsByClassName('box');
+  for (let box of boxes) {
     box.addEventListener('click', () => {
-      let postcard = document.getElementById('postcard');
-      postcard.classList.remove('hidden');
-      box.appendChild(postcard);
+      showPostcard();
     });
-  });
-  console.log(boxes);
-});
+  }
+}
+
+function displayBoxes() {
+  let number = Number(document.getElementById('amount').value);
+  removeAllBoxes();
+  addBoxes(number);
+  addClickEventToBoxes();
+}
+
+btn.addEventListener('click', displayBoxes);
