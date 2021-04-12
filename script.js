@@ -23,19 +23,11 @@ function addBoxes(number) {
   }
 }
 
-function showPostcard() {
-  let postcard = document.getElementById('postcard');
-
-  postcard.classList.remove('hidden');
-  console.log('something');
-}
-
 function addClickEventToBoxes() {
   let boxes = document.getElementsByClassName('box');
   for (let box of boxes) {
-    box.addEventListener('click', () => {
-      showPostcard();
-    });
+    box.addEventListener('click', showPostcard());
+    console.log('hello');
   }
 }
 
@@ -44,6 +36,11 @@ function displayBoxes() {
   removeAllBoxes();
   addBoxes(number);
   addClickEventToBoxes();
+}
+
+function showPostcard() {
+  const postcard = document.querySelector('.postcard');
+  postcard.classList.remove('hidden');
 }
 
 btn.addEventListener('click', displayBoxes);
