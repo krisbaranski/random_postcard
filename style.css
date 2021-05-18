@@ -9,7 +9,7 @@ body {
   background: url(images/travel3.jpg) no-repeat center center;
   background-size: cover;
   margin: 0;
-  display: block;
+  /* display: block; */
   align-items: center;
   justify-items: center;
   height: 100vh;
@@ -49,25 +49,24 @@ p {
 
 .parent {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
 }
 
-.message {
+/* .message {
   font-family: inherit;
   font-size: 25px;
   text-align: center;
   color: #fff;
   margin-top: 90px;
-}
+} */
 
 .box {
   background-color: rgba(209, 209, 209, 0.3);
   border: 1px solid rgb(116, 116, 116);
   box-shadow: 0 8px 12px -6px rgba(37, 37, 37, 0.445);
-  flex: 1 1 200px; /*  Stretching: */
-  flex: 0 1 200px; /*  No stretching: */
+  grid-template-columns: repeat(auto-fill, minmax(95px, auto));
+  /* flex: 1 1 200px;  Stretching: 
+  flex: 0 1 200px;  No stretching: */
   cursor: pointer;
   position: relative;
   aspect-ratio: 3 / 2;
